@@ -5,8 +5,8 @@ def get_first_name_of_season_winner(data, season)
   data.each do |season_number, value| #season is season_number, value is data... value[0] is first hash within season...
     #binding.pry
     if (season_number == season) #if this is the season passed into the method...
-      #doing 'value.each_with_index' instead of 'each' gets me 'values'... key below is first hash, index is 0, value is all hashes...
-      value.each_with_index do |key, index| #key is first hash of data WITHIN array, value is nil... (first is name)
+
+      value.each do |key, value| #key is first hash of data WITHIN array, value is nil... (first is name)
         #binding.pry
         #key.keys => ["name", "age", "hometown", "occupation", "status"]
         #key.values=> ["Tessa Horst", "26", "San Francisco, CA", "Social Worker", "Winner"]
@@ -33,9 +33,7 @@ def get_contestant_name(data, occupation)
   contestant_array = [] #array to hold contestant
   data.each do |season_number, value| #season is season_number, value is data... value[0] is first hash within season...
     #binding.pry
-    #if (season_number == season) #if this is the season passed into the method...
-      #doing 'value.each_with_index' instead of 'each' gets me 'values'... key below is first hash, index is 0, value is all hashes...
-      value.each_with_index do |key, index| #key is first hash of data WITHIN array, value is nil... (first is name)
+      value.each do |key, value| #key is first hash of data WITHIN array, value is nil... (first is name)
         #binding.pry
         #key.keys => ["name", "age", "hometown", "occupation", "status"]
         #key.values=> ["Tessa Horst", "26", "San Francisco, CA", "Social Worker", "Winner"]
@@ -44,7 +42,6 @@ def get_contestant_name(data, occupation)
           contestant_array << key.values[0] ###put that contestant's name into contestant_array
         end #end if statement
 
-      #end #end if (season_number == season) statement
     end #end for each loop
   end #end for each loop
 
@@ -61,7 +58,7 @@ def count_contestants_by_hometown(data, hometown)
   hometown_array = [] #array to hold names of contestants from hometown passed into method as a parameter
   data.each do |season_number, value| #season is season_number, value is data... value[0] is first hash within season...
     #binding.pry
-      value.each_with_index do |key, index| #key is first hash of data WITHIN array, value is nil... (first is name)
+      value.each do |key, value| #key is first hash of data WITHIN array, value is nil... (first is name)
         #binding.pry
         #key.keys => ["name", "age", "hometown", "occupation", "status"]
         #key.values=> ["Tessa Horst", "26", "San Francisco, CA", "Social Worker", "Winner"]
@@ -70,7 +67,6 @@ def count_contestants_by_hometown(data, hometown)
           hometown_array << key.values[0] ###put that contestant's name into contestant_array
         end #end if statement
 
-      #end #end if (season_number == season) statement
     end #end for each loop
   end #end for each loop
 
@@ -88,7 +84,7 @@ def get_occupation(data, hometown)
   occupation_array = [] #array to hold occupation of contestants from hometown passed into method as a parameter
   data.each do |season_number, value| #season is season_number, value is data... value[0] is first hash within season...
     #binding.pry
-      value.each_with_index do |key, index| #key is first hash of data WITHIN array, value is nil... (first is name)
+      value.each do |key, value| #key is first hash of data WITHIN array, value is nil... (first is name)
         #binding.pry
         #key.keys => ["name", "age", "hometown", "occupation", "status"]
         #key.values=> ["Tessa Horst", "26", "San Francisco, CA", "Social Worker", "Winner"]
@@ -111,30 +107,21 @@ end #end method
 
 
 def get_average_age_for_season(data, season)
-  ###finish this
 
   ages_array = [] #array to hold winners
   data.each do |season_number, value| #season is season_number, value is data... value[0] is first hash within season...
     #binding.pry
     if (season_number == season) #if this is the season passed into the method...
-      #doing 'value.each_with_index' instead of 'each' gets me 'values'... key below is first hash, index is 0, value is all hashes...
-      value.each_with_index do |key, index| #key is first hash of data WITHIN array, value is nil... (first is name)
+      value.each do |key, value| #key is first hash of data WITHIN array, value is nil... (first is name)
         #binding.pry
         #key.keys => ["name", "age", "hometown", "occupation", "status"]
         #key.values=> ["Tessa Horst", "26", "San Francisco, CA", "Social Worker", "Winner"]
 
-        ####collect for below???
         ages_array << key.values[1] ###put contestant's age into ages_array
 
       end #end if (season_number == season) statement
     end #end for each loop
   end #end for each loop
-
-  #winner_first_name = winners_array.to_s.split.first.flatten #split the name within winners_array array by the space separating first and last name...
-  #winner_first_name = winners_array.first.split.first #first returns the first name in winners_array as a string, split splits the name at the space between first and last name, and first returns the first name
-
-  #average = temp.sum / temp.size.to_f
-  #ages_string = ages_array.flatten!
 
   #eval x.to_s.gsub('"', '')
   #got this from here: http://stackoverflow.com/questions/20834334/getting-rid-of-double-quotes-inside-array-without-turing-array-into-a-string
